@@ -1,5 +1,5 @@
 # 🚀 Project FLOTOPI
-![Project FLOTOPI Logo](ChatGPT%20Image%20Jul%2015,%202026,%2005_42_43%20AM.png)
+![Project FLOTOPI Logo](ProjectFLOTOPI-Logo.png)
 > **A Raspberry Pi APRS infrastructure station built one lesson at a time.**
 
 ---
