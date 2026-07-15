@@ -1,5 +1,5 @@
 # 🚀 Project FLOTOPI
-
+![Project FLOTOPI Logo](ChatGPT%20Image%20Jul%2015,%202026,%2005_42_43%20AM.png)
 > **A Raspberry Pi APRS infrastructure station built one lesson at a time.**
 
 ---
@@ -30,6 +30,15 @@ The goal of the project is simple:
 
 ✅ Comet GP-3 Base Antenna
 
+## Project Station
+
+### Control Station
+
+![Station](Station.JPG)
+
+### Antenna System
+
+![GP-3](GP-3.JPG)
 ---
 
 ## Hardware
