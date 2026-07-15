@@ -1,5 +1,5 @@
 # 🚀 Project FLOTOPI
-![Project FLOTOPI Logo](ProjectFLOTOPI-Logo.png)
+![Project FLOTOPI Logo](images/ProjectFLOTOPI-Logo.png)
 > **A Raspberry Pi APRS infrastructure station built one lesson at a time.**
 
 ---
@@ -34,11 +34,11 @@ The goal of the project is simple:
 
 ### Control Station
 
-![Station](Station.JPG)
+![Station](images/Station.JPG)
 
 ### Antenna System
 
-![GP-3](GP-3.JPG)
+![GP-3](images/GP-3.JPG)
 ---
 
 ## Hardware
