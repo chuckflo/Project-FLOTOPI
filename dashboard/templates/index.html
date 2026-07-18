@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30">
+
+    <title>Project FLOTOPI Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div>
+            <p class="eyebrow">APRS INFRASTRUCTURE STATION</p>
+            <h1>Project FLOTOPI</h1>
+            <p class="subtitle">{{ callsign }} · iGate · WIDE1-1 Fill-In Digipeater</p>
+        </div>
+
+        <div class="header-badge">
+            Dashboard v{{ version }}
+        </div>
+    </header>
+
+    <main>
+
+        <section class="status-panel {{ status_class }}">
+            <div class="status-light"></div>
+
+            <div>
+                <p class="section-label">Station Status</p>
+                <h2>{{ on_air }}</h2>
+                <p>Direwolf service: {{ direwolf_status }}</p>
+            </div>
+        </section>
+
+        <section class="metrics-grid">
+
+            <article class="metric-card">
+                <p class="metric-label">Station Beacons</p>
+                <p class="metric-value">{{ beacons }}</p>
+                <p class="metric-note">Last 24 hours</p>
+            </article>
+
+            <article class="metric-card">
+                <p class="metric-label">APRS-IS Events</p>
+                <p class="metric-value">{{ igate_events }}</p>
+                <p class="metric-note">Last 24 hours</p>
+            </article>
+
+            <article class="metric-card">
+                <p class="metric-label">Digipeater Events</p>
+                <p class="metric-value">{{ digipeater_events }}</p>
+                <p class="metric-note">Last 24 hours</p>
+            </article>
+
+            <article class="metric-card">
+                <p class="metric-label">Boot Service</p>
+                <p class="metric-value small">{{ boot_status }}</p>
+                <p class="metric-note">Direwolf startup state</p>
+            </article>
+
+        </section>
+
+        <section class="details-grid">
+
+            <article class="detail-card">
+                <h3>Raspberry Pi</h3>
+
+                <dl>
+                    <div>
+                        <dt>Uptime</dt>
+                        <dd>{{ uptime }}</dd>
+                    </div>
+
+                    <div>
+                        <dt>CPU Temperature</dt>
+                        <dd>{{ temperature }}</dd>
+                    </div>
+
+                    <div>
+                        <dt>Memory</dt>
+                        <dd>{{ memory }}</dd>
+                    </div>
+
+                    <div>
+                        <dt>Disk</dt>
+                        <dd>{{ disk }}</dd>
+                    </div>
+                </dl>
+            </article>
+
+            <article class="detail-card">
+                <h3>Station Equipment</h3>
+
+                <dl>
+                    <div>
+                        <dt>Callsign</dt>
+                        <dd>{{ callsign }}</dd>
+                    </div>
+
+                    <div>
+                        <dt>Radio</dt>
+                        <dd>Radioddity QB25</dd>
+                    </div>
+
+                    <div>
+                        <dt>Interface</dt>
+                        <dd>Digirig Lite</dd>
+                    </div>
+
+                    <div>
+                        <dt>Antenna</dt>
+                        <dd>Comet GP-3</dd>
+                    </div>
+                </dl>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Project FLOTOPI · {{ callsign }} · Dashboard v{{ version }}</p>
+        <p>Automatic refresh every 30 seconds</p>
+    </footer>
+
+</body>
+</html>
