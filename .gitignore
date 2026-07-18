@@ -14,3 +14,20 @@ instance/
 # Temporary files
 *.swp
 *.bak
+
+# Python
+__pycache__/
+*.pyc
+
+# Flask
+instance/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Backup files
+*.bak
+*.swp
