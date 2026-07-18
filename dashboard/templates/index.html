@@ -19,11 +19,15 @@
         <div>
             <p class="eyebrow">APRS INFRASTRUCTURE STATION</p>
             <h1>Project FLOTOPI</h1>
-            <p class="subtitle">{{ callsign }} · iGate · WIDE1-1 Fill-In Digipeater</p>
+            <p class="subtitle">
+                {{ callsign }} · Oceanside, California · iGate · WIDE1-1 Fill-In Digipeater
+            </p>
         </div>
 
-        <div class="header-badge">
-            Dashboard v{{ version }}
+        <div class="updated-panel">
+            <p class="updated-label">Last Updated</p>
+            <p class="updated-time">{{ updated_at }}</p>
+            <p class="version-label">Dashboard v{{ version }}</p>
         </div>
     </header>
 
@@ -33,10 +37,54 @@
             <div class="status-light"></div>
 
             <div>
-                <p class="section-label">Station Status</p>
+                <p class="section-label">Project Status</p>
                 <h2>{{ on_air }}</h2>
-                <p>Direwolf service: {{ direwolf_status }}</p>
+                <p>AK6QN-10 APRS infrastructure station</p>
             </div>
+        </section>
+
+        <section class="health-grid">
+
+            <article class="health-card">
+                <span class="health-light {{ 'healthy' if direwolf_healthy else 'unhealthy' }}"></span>
+                <div>
+                    <p class="health-name">Direwolf</p>
+                    <p class="health-state">
+                        {{ 'Running' if direwolf_healthy else 'Not Running' }}
+                    </p>
+                </div>
+            </article>
+
+            <article class="health-card">
+                <span class="health-light {{ 'healthy' if aprsis_healthy else 'unhealthy' }}"></span>
+                <div>
+                    <p class="health-name">APRS-IS</p>
+                    <p class="health-state">
+                        {{ 'Connected' if aprsis_healthy else 'No Recent Traffic' }}
+                    </p>
+                </div>
+            </article>
+
+            <article class="health-card">
+                <span class="health-light {{ 'healthy' if digipeater_healthy else 'unhealthy' }}"></span>
+                <div>
+                    <p class="health-name">Digipeater</p>
+                    <p class="health-state">
+                        {{ 'Active' if digipeater_healthy else 'No Recent Activity' }}
+                    </p>
+                </div>
+            </article>
+
+            <article class="health-card">
+                <span class="health-light {{ 'healthy' if autostart_healthy else 'unhealthy' }}"></span>
+                <div>
+                    <p class="health-name">Auto Start</p>
+                    <p class="health-state">
+                        {{ 'Enabled' if autostart_healthy else 'Disabled' }}
+                    </p>
+                </div>
+            </article>
+
         </section>
 
         <section class="metrics-grid">
@@ -60,9 +108,9 @@
             </article>
 
             <article class="metric-card">
-                <p class="metric-label">Boot Service</p>
-                <p class="metric-value small">{{ boot_status }}</p>
-                <p class="metric-note">Direwolf startup state</p>
+                <p class="metric-label">Station Uptime</p>
+                <p class="metric-value uptime-value">{{ uptime }}</p>
+                <p class="metric-note">Continuous operation</p>
             </article>
 
         </section>
@@ -70,14 +118,9 @@
         <section class="details-grid">
 
             <article class="detail-card">
-                <h3>Raspberry Pi</h3>
+                <h3>System Health</h3>
 
                 <dl>
-                    <div>
-                        <dt>Uptime</dt>
-                        <dd>{{ uptime }}</dd>
-                    </div>
-
                     <div>
                         <dt>CPU Temperature</dt>
                         <dd>{{ temperature }}</dd>
@@ -92,11 +135,16 @@
                         <dt>Disk</dt>
                         <dd>{{ disk }}</dd>
                     </div>
+
+                    <div>
+                        <dt>Direwolf Service</dt>
+                        <dd>{{ direwolf_status }}</dd>
+                    </div>
                 </dl>
             </article>
 
             <article class="detail-card">
-                <h3>Station Equipment</h3>
+                <h3>Station Information</h3>
 
                 <dl>
                     <div>
