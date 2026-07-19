@@ -3,6 +3,8 @@ import subprocess
 
 from flask import Flask, render_template
 
+from activity_parser import get_recent_activity
+
 app = Flask(__name__)
 
 DASHBOARD_VERSION = "3.1.0"
@@ -67,7 +69,14 @@ def dashboard():
     on_air = "OPERATIONAL" if overall_healthy else "ATTENTION NEEDED"
     status_class = "good" if overall_healthy else "bad"
 
-    uptime = run("uptime -p")
+    uptime = run(
+    """awk '{
+        days = int($1 / 86400);
+        hours = int(($1 % 86400) / 3600);
+        minutes = int(($1 % 3600) / 60);
+        printf "%dd %dh %dm", days, hours, minutes
+    }' /proc/uptime"""
+)
     temperature = run("vcgencmd measure_temp | cut -d= -f2")
     disk = run("""df -h / | awk 'NR==2 {print $5 " used, " $4 " free"}'""")
     memory = run("""free -h | awk 'NR==2 {print $3 " used / " $2}'""")
@@ -86,6 +95,8 @@ def dashboard():
         "journalctl -u direwolf.service --since '24 hours ago' "
         "--no-pager | grep -c Digipeater"
     )
+
+    recent_activity = get_recent_activity(hours=1, max_events=8)
 
     updated_at = datetime.now().strftime("%A, %B %-d, %Y · %-I:%M:%S %p")
 
@@ -109,6 +120,7 @@ def dashboard():
         igate_events=igate_events,
         digipeater_events=digipeater_events,
         updated_at=updated_at,
+        recent_activity=recent_activity,
     )
 
 

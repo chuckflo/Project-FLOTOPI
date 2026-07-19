@@ -220,3 +220,82 @@ footer {
 .brand-name {
     color: var(--accent);
 }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width:  105px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.brand-text {
+    min-width: 0;
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        align-items: flex-start;
+    }
+
+    .brand {
+        align-items: flex-start;
+    }
+
+    .logo {
+        width: 72px;
+    }
+}
+/* ---------- Recent RF Activity ---------- */
+
+.activity-card {
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 22px;
+}
+
+.activity-card h3 {
+    color: var(--accent);
+    margin-top: 0;
+}
+
+.activity-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 24px;
+}
+
+.activity-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+}
+
+.activity-time {
+    min-width: 92px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.activity-station {
+    font-weight: bold;
+    color: var(--text);
+}
+
+.activity-details {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+    .activity-list {
+        grid-template-columns: 1fr;
+    }
+}

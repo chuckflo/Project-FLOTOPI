@@ -16,15 +16,28 @@
 <body>
 
     <header class="site-header">
-        <div>
-            <p class="eyebrow">APRS INFRASTRUCTURE STATION</p>
-            <h1>Project <span class="brand-name">FLOTOPI</span></h1>
-            <p class="subtitle">
-                {{ callsign }} · Oceanside, California · iGate · WIDE1-1 Fill-In Digipeater
-            </p>
-        </div>
+      <div class="brand">
+          <img
+             src="{{ url_for('static', filename='flotopi-logo.png') }}"
+             alt="Project FLOTOPI logo"
+             class="logo"
+          >
 
-        <div class="updated-panel">
+          <div class="brand-text">
+              <p class="eyebrow">APRS INFRASTRUCTURE STATION</p>
+              <h1>Project <span class="brand-name">FLOTOPI</span></h1>
+              <p class="subtitle">
+                  {{ callsign }} · Oceanside, California · iGate · WIDE1-1 Fill-In Digipeater
+              </p>
+          </div>
+      </div>   
+
+        <div class="updated-panel">    
+
+
+
+
+
             <p class="updated-label">Last Updated</p>
             <p class="updated-time">{{ updated_at }}</p>
             <p class="version-label">Dashboard v{{ version }}</p>
@@ -170,6 +183,41 @@
             </article>
 
         </section>
+<section class="activity-card">
+
+    <h3>📡 Recent RF Activity</h3>
+
+    {% if recent_activity %}
+        <div class="activity-list">
+
+            {% for event in recent_activity %}
+                <div class="activity-row">
+
+                    <div class="activity-time">
+                        {{ event.time }}
+                    </div>
+
+                    <div class="activity-main">
+                        <div class="activity-station">
+                            {{ event.station }}
+                        </div>
+
+                        <div class="activity-details">
+                            {{ event.action }} · {{ event.packet_type }}
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <p>No recent APRS activity found.</p>
+    {% endif %}
+
+</section>
+
+
 
     </main>
 
